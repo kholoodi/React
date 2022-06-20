@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+        <!--React linkes form  https://reactjs.org/docs/cdn-links.html -->
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <!-- Load Babel -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <title>React </title>
+    </head>
+    <body>
+        <!--React State-->
+        <div id= "root"></div>
+        
+        <script type="text/babel">
+            class Counter extends React.Component{
+                state ={
+                    counter:0
+                }
+                onClickHandler = ()=>{
+                    //console.log(this.state.Counter) //when clic the button pritn counter value
+                    this.setState({
+                        counter:  this.state.counter + 1
+                    })
+                }
+                onClickHandlerTwo = ()=>{
+                    //console.log(this.state.Counter) //when clic the button pritn counter value
+                    this.setState({
+                        counter:  this.state.counter - 1
+                    })
+                }
+                render(){
+                     return (
+                         <div className ="Counter">
+                            <p>{this.state.counter}</p>
+                            <button onClick ={this.onClickHandler}> Add One</button>
+                            <button onClick ={this.onClickHandlerTwo}> Sub One</button>
+                            </div>
+                        )
+                }
+            }
+
+            function App(props){
+                
+                return(
+                    <div className="App"> 
+                        <Counter />
+                    </div>)
+            }
+            const container = document.getElementById("root")
+            ReactDOM.render(<App/>, container)
+               
+        </script>
+
+
+    </body>
+</html>

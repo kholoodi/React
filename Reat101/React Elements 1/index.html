@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+        <!--React linkes form  https://reactjs.org/docs/cdn-links.html -->
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <title>React </title>
+    </head>
+    <body>
+        <!--create and show elements with React -->
+        <!--Dom nood every elemnt in HTML page -->
+        <!---<h1 id ="header"> React</h1> -->
+        <div id ="root"> 
+        <!---Where to show -->
+        </div>
+        
+        <script>
+            //create element 
+            /*React.createEement(type of nood, properties, [...children's nood ])
+            * For example <h1 id ="header"> React</h1> :
+            * type -->  h1
+            * properties --> id = "header" // is an object 
+            * childrean --> "React"
+             */
+             const element = React.createElement("h1", {id: "header"}, "React")
+             const elementTwo = React.createElement("p", {className: "text"}, "Welcom To React")
+
+             const container = document.getElementById("root")
+             
+             /* Show React element's i DOM by:
+             * ReactDOM.render(What to show , where to show )
+                * what to show --> element 
+                * where to show --> container
+                **/ 
+               /**if we have more than one element in same container  render() shows just last one */
+               //ReactDOM.render(element, container)
+               //ReactDOM.render(elementTwo, container)
+               /**So to show more than one element put them in the array **/
+               ReactDOM.render([element,elementTwo], container)
+               
+        </script>
+
+
+    </body>
+</html>

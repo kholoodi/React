@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+        <!--React linkes form  https://reactjs.org/docs/cdn-links.html -->
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <!-- Load Babel -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <title>React </title>
+    </head>
+    <body>
+        <!--React Components  -->
+        <!--components can created by class or function, 
+            with components we can  able to divide the user interface
+             and we can use it more than one time. -->
+        <div id= "root"></div>
+        <!---Header -->
+        <!--<div class ="header"> 
+            <h1>React</h1>
+        </div> -->
+        <!---Content 
+        <div class ="content"> 
+            <p>Welcom to React </p>
+        </div>-->
+        
+         <!---Footer 
+         <div class ="footer"> 
+            <p> The Footer </p>
+        </div> -->
+        <script type="text/babel">
+           /**1- Create component by function (create function which return React )*/
+           function Header(props){
+               return (
+                   <div className ="hader"> 
+                        <h1>React</h1>
+                        </div>
+                        )
+                    }
+            /***/
+            function Content(props){
+               return (
+                   <div className ="content"> 
+                        <p>Welcom to React </p>
+                        </div>)
+                    }
+            /***/ 
+            function Footer(props){
+               return (<div className ="footer"> 
+                        <p> The Footer </p>
+                        </div>)      
+                    }
+            /**Show components */
+            function App(props){
+                //for do instes from components <ComponentName /> OR <ComponentName> </ComponentName>
+                return(
+                    <div className="App">
+                        <Header/>
+                        <Content> </Content>
+                        <Footer/>
+                    </div>)
+            }
+            const container = document.getElementById("root")
+            ReactDOM.render(<App/>, container)
+               
+        </script>
+
+
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+        <!--React linkes form  https://reactjs.org/docs/cdn-links.html -->
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <!-- Load Babel -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <title>React </title>
+    </head>
+    <body>
+        <!--React Class compoent Life Cycle-->
+        <style>
+            div {
+                text-align:center;
+            }
+        </style>
+        <div id= "root"></div>
+        
+        <script type="text/babel">
+        const books =[
+                {
+                    name: "Algorithms",
+                    id: 1
+                },
+                {
+                    name: "Operting System",
+                    id: 2
+                },
+                {
+                    name: "Computer Architecture",
+                    id: 3
+                }
+            ];
+        //Unmoutind create when delete component from DOM 
+            class BookList extends React.Component{
+                state = {
+                    books: [...books]
+                }
+                //delet book
+                deleteBook = id =>{
+                    this.setState({
+                        books: this.state.books.filter(book =>(
+                            book.id !== id 
+                        ))
+                    })
+                }
+                render(){
+                    console.log("Render Method")
+                    //send the result to DOM 
+                    return (
+                        <div className="BookList">
+                            { this.state.books.map(({id, name}) => (
+                                <Book
+                                key = {id} 
+                                name = {name}
+                                id = {id}
+                                deleteBook ={this.deleteBook} 
+                                />
+                                ))}
+                            </div>
+                    )
+                }
+                
+            }
+            class Book extends React.Component{
+
+                componentWillMount(){
+                    console.log("componentWillMount Method");
+                }
+                render(){
+                    const {id , name, deleteBook} = this.props
+                
+                return(
+                    <div className ="Book">
+                        <h2>{name}</h2>
+                        <button onClick = { ()=> deleteBook(id)}> Delete Book</button>
+                        </div>
+                )
+                }
+            }
+
+            
+            const container = document.getElementById("root")
+            ReactDOM.render(<BookList/>, container)
+               
+        </script>
+
+
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+        <!--React linkes form  https://reactjs.org/docs/cdn-links.html -->
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <!-- Load Babel -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <title>React </title>
+    </head>
+    <body>
+        <!--React Class compoent Life Cycle-->
+        <style>
+            form {
+                text-align:center;
+            }
+        </style>
+        <div id= "root"></div>
+        
+        <script type="text/babel">
+        //Mounting s
+            const books =[
+                {
+                    name: "Algorithms",
+                    id: 1
+                },
+                {
+                    name: "Operting System",
+                    id: 2
+                },
+                {
+                    name: "Computer Architecture",
+                    id: 3
+                }
+            ];
+
+            class BookList extends React.Component{
+                //method one
+                constructor(props){
+                    super(props)
+                   console.log("Constructor Method")
+                   
+                   this.state = {
+                       books : [] //Take  books the value from setSteate 
+                   }
+                }
+                //method tree
+                componentDidMount(){
+                    console.log("ComponentdidMount  Method ")
+                   this.setState({
+                       books: [...books] // take book value from books arrar (line 24)
+                   })
+                }
+                //method two
+                render(){
+                    console.log("Render Method")
+                    //send the result to DOM 
+                    return (
+                        <div className="BookList">
+                            { this.state.books.map(book => (
+                               <h2 key = {book.id}> {book.name}</h2> )
+                               )}
+                            </div>
+                    )
+                }
+                
+            }
+
+            
+            const container = document.getElementById("root")
+            ReactDOM.render(<BookList/>, container)
+               
+        </script>
+
+
+    </body>
+</html>
